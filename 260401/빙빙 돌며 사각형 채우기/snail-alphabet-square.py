@@ -12,7 +12,7 @@ def in_range(x,y):
 
 x, y = 0, 0
 dir_num = 0
-grid[x][y] = ord("A")
+grid[x][y] = "A"
 
 for i in range(ord("B"), ord("B")+n*m-1):
     if i > ord("Z"):
@@ -22,10 +22,9 @@ for i in range(ord("B"), ord("B")+n*m-1):
         dir_num = (dir_num+1) % 4
 
     x, y = x+dxs[dir_num], y+dys[dir_num]
-    grid[x][y] = i
+    grid[x][y] = chr(i)
 
 for i in range(n):
     for j in range(m):
-        grid[i][j] = chr(grid[i][j])
         print(grid[i][j], end=' ')
     print()
