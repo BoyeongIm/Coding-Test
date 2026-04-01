@@ -13,16 +13,16 @@ def in_range(x,y):
 x, y = 0, 0
 dir_num = 0
 grid[x][y] = "A"
+char_count = 1
 
-for i in range(ord("B"), ord("B")+n*m-1):
-    if i > ord("Z"):
-        i = ord("A") + ord("Z") - i - 1
+for i in range(1, n*m):
     nx, ny = x+dxs[dir_num], y+dys[dir_num]
     if not in_range(nx,ny) or grid[nx][ny] != ".":
         dir_num = (dir_num+1) % 4
 
     x, y = x+dxs[dir_num], y+dys[dir_num]
-    grid[x][y] = chr(i)
+    grid[x][y] = chr(ord("A")+(char_count%26))
+    char_count += 1
 
 for i in range(n):
     for j in range(m):
