@@ -27,10 +27,10 @@ while grid_count < n**2:
             turn_count = 0
     else:
         x, y = x+dxs[dir_num], y+dys[dir_num]
-        if in_range(x,y) and grid[x][y] == 0:
-            grid_count += 1
-            grid[x][y] = grid_count
-            move_count += 1
+        # if in_range(x,y) and grid[x][y] == 0:
+        grid_count += 1
+        grid[x][y] = grid_count
+        move_count += 1
 
 for i in range(n):
     for j in range(n):
