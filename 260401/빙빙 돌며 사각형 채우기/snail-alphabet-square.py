@@ -14,7 +14,7 @@ x, y = 0, 0
 dir_num = 0
 grid[x][y] = ord("A")
 
-for i in range(ord("B"), ord("B")+n*m):
+for i in range(ord("B"), ord("B")+n*m-1):
     if i > ord("Z"):
         i = ord("A") + ord("Z") - i - 1
     nx, ny = x+dxs[dir_num], y+dys[dir_num]
