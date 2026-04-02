@@ -28,7 +28,7 @@ for i in range(n):
             count += 1
         else:
             now = e
-            count = 0
+            count = 1
         if m == count:
             answer += 1
             break
