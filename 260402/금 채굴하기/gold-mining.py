@@ -8,7 +8,7 @@ def in_range(x,y):
 
 for x in range(n):
     for y in range(n):
-        for k in range(2*n+1):
+        for k in range(2*n):
             cost = k**2 + (k+1)**2
             gold =0 
             for nx in range(n):
