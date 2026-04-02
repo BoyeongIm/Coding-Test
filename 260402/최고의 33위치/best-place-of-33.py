@@ -8,7 +8,7 @@ if n==3:
 
 else:
     for i in range(n-2):
-        for j in range(i, i+3):
+        for j in range(n-2):
             val = 0
             rows = grid[i:i+3]
             for r in rows:
