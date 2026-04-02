@@ -24,8 +24,7 @@ for i in range(n-1):
             cols = r[j:j+2]
             for c in cols:
                 vals.append(c)
-        vals.sort(reverse=True)
-        val_sum = sum(vals[:3])
+        val_sum = sum(vals)-min(vals)
         if max_value < val_sum:
             max_value = val_sum
 
