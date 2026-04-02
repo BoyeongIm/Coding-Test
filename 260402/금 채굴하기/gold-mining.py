@@ -8,12 +8,12 @@ def in_range(x,y):
 
 for x in range(n):
     for y in range(n):
-        for k in range(2*n):
+        for k in range(2*n+1):
             cost = k**2 + (k+1)**2
-            gold = 0
+            gold =0 
             for nx in range(n):
                 for ny in range(n):
-                    if abs(nx-x)+abs(nx-y) <= k:
+                    if abs(nx-x)+abs(ny-y) <= k:
                         if in_range(nx, ny) and grid[nx][ny] == 1:
                             gold += 1
             if gold * m - cost >= 0 and max_gold < gold:
