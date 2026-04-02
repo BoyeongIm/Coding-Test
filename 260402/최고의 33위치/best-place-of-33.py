@@ -10,7 +10,7 @@ else:
     for i in range(n-2):
         for j in range(i, i+3):
             val = 0
-            rows = grid[i:i+3]
+            rows = grid[i:i+2]
             for r in rows:
                 val += sum(r[j:j+3])
             if val > answer:
