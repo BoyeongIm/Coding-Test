@@ -12,6 +12,7 @@ for sx in range(n):
                     for y in range(sy, ey+1):
                         if grid[x][y] <= 0:
                             flag = False
+                            break
                 if flag:
                     size = (ex-sx+1) * (ey-sy+1)
                     if size > max_count:
