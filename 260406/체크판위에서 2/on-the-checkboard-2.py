@@ -9,4 +9,6 @@ for i in range(1, R-2):
             for l in range(j+1, C-1):
                 if grid[i][j] == 'B' and grid[k][l] == 'W':
                     cnt += 1
+if grid[R-1][C-1] != 'B':
+    cnt = 0
 print(cnt)
