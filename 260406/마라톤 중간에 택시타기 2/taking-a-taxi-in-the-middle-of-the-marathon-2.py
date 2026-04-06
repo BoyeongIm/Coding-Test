@@ -1,3 +1,4 @@
+import sys
 n = int(input())
 points = [tuple(map(int, input().split())) for _ in range(n)]
 x = [p[0] for p in points]
@@ -6,7 +7,7 @@ y = [p[1] for p in points]
 def manhattan(x1, x2, y1, y2):
     return abs(x1-x2) + abs(y1-y2)
 
-mindist = 99999
+mindist = sys.maxsize
 # Please write your code here.
 for i in range(1, n-1):
     dist = 0
