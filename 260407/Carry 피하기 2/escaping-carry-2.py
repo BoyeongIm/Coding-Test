@@ -14,7 +14,7 @@ def check_carry(n1, n2, n3):
 
 
 import sys
-maxsum = -sys.maxsize
+maxsum = -1
 for i in range(n-2):
     for j in range(i+1, n-1):
         for k in range(j+1, n): 
