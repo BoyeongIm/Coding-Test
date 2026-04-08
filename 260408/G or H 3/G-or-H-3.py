@@ -13,6 +13,6 @@ for i in range(n):
 window_pnts = sum(arr[:k+1])
 max_pnts = window_pnts
 for i in range(k+1, len(arr)):
-    window_pnts += arr[i] - arr[i-k]
+    window_pnts += arr[i] - arr[i-k-1]
     max_pnts = max(max_pnts, window_pnts)
 print(max_pnts)
