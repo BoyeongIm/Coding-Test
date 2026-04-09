@@ -10,7 +10,7 @@ for _ in range(N):
 # Please write your code here.
 arr = [0] * max(pos)
 for c, p in zip(candy, pos):
-    arr[p-1] += c
+    arr[p-1] += c # 같은 위치에 여러 바구니가 놓여 있는 것이 가능하기 때문에 += 로 해줘야 함!!!
 
 window = sum(arr[:(2*K+1)])
 maxsum = window
