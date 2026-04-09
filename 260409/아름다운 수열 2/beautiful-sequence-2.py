@@ -5,12 +5,20 @@ B = list(map(int, input().split()))
 # Please write your code here.
 from collections import Counter
 ans = 0
-cnter = Counter(B)
-for i in range(N-M+1):
-    cnt = []
-    for c in range(i, i+M):
-        if A[c] in B:
-            cnt.append(A[c])
-    if Counter(cnt) == cnter:
+cnterA = Counter(A[:M])
+cnterB = Counter(B)
+
+if cnterA == cnterB:
+    ans += 1
+for i in range(M, N):
+    left = A[i-M]
+    right = A[i]
+    cnterA[left] -= 1
+    if cnterA[left] == 0:
+        del cnterA[left]
+    cnterA[right] += 1
+
+    if cnterA == cnterB:
         ans += 1
+
 print(ans)
