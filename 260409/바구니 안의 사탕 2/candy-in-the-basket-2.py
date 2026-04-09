@@ -10,7 +10,7 @@ for _ in range(N):
 # Please write your code here.
 arr = [0] * max(pos)
 for c, p in zip(candy, pos):
-    arr[p-1] = c
+    arr[p-1] += c
 
 window = sum(arr[:(2*K+1)])
 maxsum = window
