@@ -14,10 +14,9 @@ for i in range(len(arr)):
             third = totalsum-first-second
             if first==second or second==third or first==third:
                 continue
-            else:
-                maxab = max(first, second, third)
-                minab = min(first, second, third)
-                ans = min(ans, maxab-minab)
+            maxab = max(first, second, third)
+            minab = min(first, second, third)
+            ans = min(ans, maxab-minab)
 if ans < INT_MAX:
     print(ans)
 else:
