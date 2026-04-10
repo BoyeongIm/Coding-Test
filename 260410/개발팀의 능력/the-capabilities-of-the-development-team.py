@@ -6,10 +6,11 @@ totalsum = sum(arr)
 INT_MAX = sys.maxsize
 ans = INT_MAX
 for i in range(len(arr)):
-    for j in range(i+1, len(arr)):
-        for k in range(j+1, len(arr)):
-            first = arr[i]
-            second = arr[j]+arr[k]
+    first = arr[i]
+    newlist = arr[:i]+arr[i+1:]
+    for j in range(len(newlist)-1):
+        for k in range(j+1, len(newlist)):
+            second = newlist[j]+newlist[k]
             third = totalsum-first-second
             if first==second or second==third or first==third:
                 continue
