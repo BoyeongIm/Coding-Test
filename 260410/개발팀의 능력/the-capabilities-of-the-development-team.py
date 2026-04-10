@@ -12,7 +12,7 @@ for i in range(len(arr)):
             second = arr[j]+arr[k]
             third = totalsum-first-second
             if first==second or second==third or first==third:
-                break
+                continue
             else:
                 maxab = max(first, second, third)
                 minab = min(first, second, third)
