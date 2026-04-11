@@ -18,7 +18,7 @@ for i in range(n-2):
                 size = abs(x1-x2) * abs(y1-y3)
             elif x2==x3 and y2==y1:
                 size = abs(x2-x1) * abs(y2-y3)
-            elif x2==x3 and y3==y1:
-                size = abs(x2-x1) * abs(y2-y3)
+            elif x2==x1 and y2==y3:
+                size = abs(x2-x3) * abs(y2-y1)
             max_size = max(max_size, size)
 print(max_size)
