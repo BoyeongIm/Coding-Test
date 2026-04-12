@@ -25,9 +25,9 @@ candidates = [i for i in range(len(milks)) if milks[i] == S]
 
 ans = 0
 for c in candidates:
-    sick_p = 0
+    sick_p = set()
     for i in range(D):
         if m[i] == c:
-            sick_p += 1
-    ans = max(ans, sick_p)
+            sick_p.add(p[i])
+    ans = max(ans, len(sick_p))
 print(ans)
