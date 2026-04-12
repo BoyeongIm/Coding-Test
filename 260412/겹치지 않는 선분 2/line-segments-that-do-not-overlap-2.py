@@ -3,7 +3,6 @@ lines = [tuple(map(int, input().split())) for _ in range(n)]
 
 # Please write your code here.
 lines_sorted = sorted(lines, key=lambda x:x[0])
-print(lines_sorted)
 ans = 0
 for i in range(n-1):
     a1, a2 = lines_sorted[i]
