@@ -18,12 +18,22 @@ check_cheese = []
 for person, milk, time in zip(p, m, t):
     if person in sick.keys() and time < sick[person]:
         check_cheese.append((milk, time))
-# print(check_cheese)
 
-sick_people = set()
-for c, time in check_cheese:
-    for i in range(D):
-        if m[i] == c and t[i] <= time:
-            sick_people.add(p[i])
-# print(sick_people)
-print(len(sick_people))
+rotten = []
+for milk, time in check_cheese:
+    ok = True
+    for person, sicktime in sick.items():
+        if time < sicktime:
+            ok = False
+    if not ok:
+        rotten.append(milk)
+
+maxperson = 0
+for milk in rotten:
+    person = 0
+    for i in range(D):      
+        if m[i] == milk:
+            person += 1
+    maxperson = max(person, maxperson)
+
+print(maxperson)
