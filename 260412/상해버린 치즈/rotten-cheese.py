@@ -14,26 +14,20 @@ for _ in range(S):
     sick[person] = time
 
 # Please write your code here.
-check_cheese = []
-for person, milk, time in zip(p, m, t):
-    if person in sick.keys() and time < sick[person]:
-        check_cheese.append((milk, time))
+# 아픈 사람들 중에서 -> 아프게 한 원인을 먼저 찾고 -> 전체 검증
+milks = [0] * (M+1)
+for sickperson, sicktime in sick.items():
+    for i in range(D):
+        if p[i] == sickperson and t[i] < sicktime:
+            milks[m[i]] += 1
 
-rotten = []
-for milk, time in check_cheese:
-    ok = True
-    for person, sicktime in sick.items():
-        if time < sicktime:
-            ok = False
-    if not ok:
-        rotten.append(milk)
+candidates = [i for i in range(len(milks)) if milks[i] == 2]
 
-maxperson = 0
-for milk in rotten:
-    person = 0
-    for i in range(D):      
-        if m[i] == milk:
-            person += 1
-    maxperson = max(person, maxperson)
-
-print(maxperson)
+ans = 0
+for c in candidates:
+    sick_p = 0
+    for i in range(D):
+        if m[i] == c:
+            sick_p += 1
+    ans = max(ans, sick_p)
+print(ans)
