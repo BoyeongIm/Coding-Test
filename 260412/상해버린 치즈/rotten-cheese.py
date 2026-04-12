@@ -21,7 +21,7 @@ for sickperson, sicktime in sick.items():
         if p[i] == sickperson and t[i] < sicktime:
             milks[m[i]] += 1
 
-candidates = [i for i in range(len(milks)) if milks[i] == 2]
+candidates = [i for i in range(len(milks)) if milks[i] == S]
 
 ans = 0
 for c in candidates:
