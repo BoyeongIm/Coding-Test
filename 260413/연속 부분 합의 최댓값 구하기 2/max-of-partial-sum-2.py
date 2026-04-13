@@ -7,7 +7,5 @@ for start in range(n):
     now = 0
     for end in range(start, n):
         now += a[end]
-        if now < 0:
-            break
     maxsum = max(maxsum, now)
 print(maxsum)
