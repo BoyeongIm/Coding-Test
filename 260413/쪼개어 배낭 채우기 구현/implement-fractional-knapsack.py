@@ -10,14 +10,14 @@ for i in range(N):
 
 values_per_weight.sort(lambda x:-x[1])
 ans = 0
-while M > 0:
-    for idx, vpw in values_per_weight:
-        totalw, totalv = weights[idx], values[idx]
-        if totalw <= M:
-            ans += totalv
-            M -= totalw
-        else:
-            ans += vpw * M/totalw
-            M -= totalw
-        print(ans)
-print(ans)
+for idx, vpw in values_per_weight:
+    totalw, totalv = weights[idx], values[idx]
+    if totalw <= M:
+        ans += totalv
+        M -= totalw
+    else:
+        ans += round(totalv * M/totalw, 3)
+        M -= totalw
+    if M < 0:
+        break
+print(f"{ans:.3f}")
