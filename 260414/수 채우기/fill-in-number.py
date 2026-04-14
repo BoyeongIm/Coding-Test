@@ -1,23 +1,15 @@
 n = int(input())
 
 # Please write your code here.
-cnt2 = 0
-cnt5 = 0
-if n % 2 == 1:
-    if n > 5 and (n % 5) % 2 == 1:
-        cnt5 = n//5 - 1
-    else : 
-        cnt5 = n//5
-
-else:
-    if (n // 5) % 2 == 1:
-        cnt5 = n//5 -1
-    else:
-        cnt5 = n//5
-cnt2 = (n - cnt5*5) // 2
-n -= 5*cnt5+2*cnt2
-
-if n == 0:
-    print(cnt2+cnt5)
-else:
+cnt = n // 5
+end = False
+## 5를 최대한 많이 쓰게 하고, 안되면 줄여나가는 방식으로 하기
+while cnt >= 0:
+    remain = n - 5*cnt
+    if remain % 2 == 0:
+        end = True
+        print(cnt + remain//2)
+        break
+    cnt -=1
+if not end:
     print(-1)
