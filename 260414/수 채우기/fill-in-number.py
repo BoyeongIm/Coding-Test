@@ -4,7 +4,7 @@ n = int(input())
 cnt2 = 0
 cnt5 = 0
 if n % 2 == 1:
-    if n % 5 == 1:
+    if (n % 5) % 2 == 1:
         cnt5 = n//5 - 1
     else: 
         cnt5 = n//5
