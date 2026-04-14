@@ -1,6 +1,8 @@
 n = int(input())
 
 # Please write your code here.
+cnt2 = 0
+cnt5 = 0
 if n % 2 == 1:
     while n >= 5 and n % 2 == 1:
         n -= 5
