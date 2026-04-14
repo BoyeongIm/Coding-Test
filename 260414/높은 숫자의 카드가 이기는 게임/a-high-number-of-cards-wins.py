@@ -2,8 +2,8 @@ N = int(input())
 B = [int(input()) for _ in range(N)]
 
 # Please write your code here.
-cards = [i+1 for i in range(2*N)]
-A = [c for c in cards if c not in B]
+Bset = set(B)
+A = [i+1 for i in range(2*N) if i+1 not in Bset]
 A.sort()
 B.sort()
 i, j = 0, 0
