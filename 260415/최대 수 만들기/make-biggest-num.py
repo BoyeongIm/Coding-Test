@@ -6,9 +6,9 @@ from functools import cmp_to_key
 def compare(x, y):
     x = str(x)
     y = str(y)
-    if x*99999 > y*99999:
+    if x*9999 > y*9999:
         return -1
-    if x*99999 == y*99999:
+    if x*9999 == y*9999:
         return 0
     else:
         return 1
