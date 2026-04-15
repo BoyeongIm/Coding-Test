@@ -9,12 +9,22 @@ bombsq = []
 for s, t in bombs:
     bombsq.append((t, -s))
 heapq.heapify(bombsq)
-totaltime = 0
-totalscore = 0
+totaltime, totalscore = 0, 0
+totalbomb = []
+heapq.heapify(totalbomb)
 while bombsq:
     time, score = heapq.heappop(bombsq)
     if totaltime >= time:
-        continue
-    totalscore += (-score)
-    totaltime += 1
+        if totalscore - totalbomb[0][0] + (-score) > totalscore:
+            minscore, t = heapq.heappop(totalbomb)
+            totalscore -= minscore
+            totaltime -= 1
+            totaltime += 1
+            totalscore += (-score)
+            heapq.heappush(totalbomb, (-score, time))
+    else:
+        totaltime += 1
+        totalscore += (-score)
+        heapq.heappush(totalbomb, (-score, time))
+
 print(totalscore)
