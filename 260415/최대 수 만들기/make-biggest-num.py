@@ -17,4 +17,4 @@ arr.sort(key=cmp_to_key(compare))
 ans = ''
 for a in arr:
     ans += str(a)
-print(int(ans))
+print(ans)
