@@ -14,7 +14,4 @@ def compare(x, y):
         return 1
 
 arr.sort(key=cmp_to_key(compare))
-ans = ''
-for a in arr:
-    ans += str(a)
-print(ans)
+print(''.join(arr))
