@@ -1,6 +1,5 @@
 N = int(input())
 x, y = zip(*[tuple(map(int, input().split())) for _ in range(N)])
-x, y = list(x), list(y)
 
 # Please write your code here.
 l = []
