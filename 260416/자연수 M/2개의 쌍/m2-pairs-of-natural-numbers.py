@@ -14,11 +14,11 @@ while i < j:
     ssum = nums[i][0] + nums[j][0]
     if ans < ssum:
         ans = ssum
-    nums[i][1] -= 1
-    nums[j][1] -= 1
+    nums[i][1] -= minused
+    nums[j][1] -= minused
     if nums[i][1] == 0:
-        i += minused
+        i += 1
     if nums[j][1] == 0:
-        j -= minused
+        j -= 1
     
 print(ans)
