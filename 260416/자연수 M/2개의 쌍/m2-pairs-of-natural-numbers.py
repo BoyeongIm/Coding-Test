@@ -4,7 +4,7 @@ x, y = zip(*[tuple(map(int, input().split())) for _ in range(N)])
 nums = []
 for i in range(N):
     nums.append([y[i], x[i]])
-nums.sort(lambda x:(-x[0], x[1]))
+nums.sort(key=lambda x:(-x[0], x[1]))
 
 i, j = 0, N-1
 ans = -1
