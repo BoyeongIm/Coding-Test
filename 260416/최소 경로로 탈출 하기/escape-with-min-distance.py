@@ -20,4 +20,7 @@ while q:
             q.append((nx, ny, dist+1))
             visited[nx][ny] = True
             
-print(dist)
+if dist > 0:
+    print(dist)
+else:
+    print(-1)
