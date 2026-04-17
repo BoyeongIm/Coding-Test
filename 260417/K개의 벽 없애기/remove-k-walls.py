@@ -14,24 +14,25 @@ def in_range(x, y):
     return 0<=x<n and 0<=y<n
 
 def bfs(k):
-    visited = [[False]*n for _ in range(n)]
+    # k값마다 방문 상태가 별개로 관리되어야 함. 
+    visited = [[[False]*(k+1) for _ in range(n)] for _ in range(n)]
     dxs, dys = [1,0,0,-1],[0,1,-1,0]
     q = deque([(r1, c1, 0, k)])
-    visited[r1][c1] = True
+    visited[r1][c1][k] = True
 
     while q:
         x,y,time,left = q.popleft()
-        if x==r2 and y==c2 and left>=0:
+        if x==r2 and y==c2:
             return time
         for dx, dy in zip(dxs, dys):
             nx,ny = x+dx, y+dy
-            if in_range(nx, ny) and not visited[nx][ny]:
+            if in_range(nx, ny) and not visited[nx][ny][left]:
                 if grid[nx][ny] == 1 and left > 0:
                     left -= 1
                 elif grid[nx][ny] == 1 and left <= 0:
                     continue
                 q.append((nx, ny, time+1, left))
-                visited[nx][ny] = True
+                visited[nx][ny][left] = True
     
     return -1
 
