@@ -1,16 +1,6 @@
 N = int(input())
 from collections import deque
 # Please write your code here.
-def cal(i, num):
-    if i == 0:
-        return num-1
-    if i == 1:
-        return num+1
-    if i == 2 and num % 2 == 0:
-        return num//2
-    if i == 3 and num % 3 == 0:
-        return num//3
-    return num
 q = deque([(N, 0)])
 visited = [False] * (2*N)
 visited[N] = True
@@ -20,7 +10,15 @@ while q:
         print(times)
         break
     for i in range(4):
-        result = cal(i, num)
-        if not visited[result]:
+        result = num
+        if i == 0:
+            result -= 1
+        if i == 1:
+            result += 1
+        if i == 2 and result % 2 == 0:
+            result //= 2
+        if i == 3 and result % 3 == 0:
+            result //= 3
+        if 0 < result < 2*N and not visited[result]:
             visited[result] = True
             q.append((result, times+1))
