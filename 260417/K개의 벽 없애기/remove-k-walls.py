@@ -20,17 +20,17 @@ def bfs(k):
     visited[r1][c1] = True
 
     while q:
-        x,y,time,k = q.popleft()
-        if x==r2 and y==c2 and k==0:
+        x,y,time,left = q.popleft()
+        if x==r2 and y==c2 and left==0:
             return time
         for dx, dy in zip(dxs, dys):
             nx,ny = x+dx, y+dy
             if in_range(nx, ny) and not visited[nx][ny]:
-                if grid[nx][ny] == 1 and k > 0:
-                    k -= 1
-                elif grid[nx][ny] == 1 and k <= 0:
+                if grid[nx][ny] == 1 and left > 0:
+                    left -= 1
+                elif grid[nx][ny] == 1 and left <= 0:
                     continue
-                q.append((nx, ny, time+1, k))
+                q.append((nx, ny, time+1, left))
                 visited[nx][ny] = True
     
     return -1
