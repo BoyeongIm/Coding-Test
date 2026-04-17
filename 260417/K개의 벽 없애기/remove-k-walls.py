@@ -28,12 +28,12 @@ def bfs(k):
             nx,ny = x+dx, y+dy
             if in_range(nx, ny) and not visited[nx][ny][left]:
                 if grid[nx][ny] == 1 and left > 0:
-                    left -= 1
-                elif grid[nx][ny] == 1 and left <= 0:
-                    continue
-                q.append((nx, ny, time+1, left))
-                visited[nx][ny][left] = True
-    
+                    q.append((nx, ny, time+1, left-1))
+                    visited[nx][ny][left-1] = True
+                elif grid[nx][ny] == 0:
+                    q.append((nx, ny, time+1, left))
+                    visited[nx][ny][left] = True
+
     return -1
 
 print(bfs(k))
