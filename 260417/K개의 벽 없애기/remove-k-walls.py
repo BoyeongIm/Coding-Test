@@ -15,6 +15,7 @@ def in_range(x, y):
 
 def bfs(k):
     # k값마다 방문 상태가 별개로 관리되어야 함. 
+    # 동일한 위치라도 남은 벽 파괴 가능 횟수 k에 따라 이후 탐색 가능성이 달라짐.
     visited = [[[False]*(k+1) for _ in range(n)] for _ in range(n)]
     dxs, dys = [1,0,0,-1],[0,1,-1,0]
     q = deque([(r1, c1, 0, k)])
@@ -28,6 +29,7 @@ def bfs(k):
             nx,ny = x+dx, y+dy
             if in_range(nx, ny) and not visited[nx][ny][left]:
                 if grid[nx][ny] == 1 and left > 0:
+                    # left -= 1을 하면 그다음 for문에 영향을 주기 때문에, queue에 넣을 때 빼줘야 함.
                     q.append((nx, ny, time+1, left-1))
                     visited[nx][ny][left-1] = True
                 elif grid[nx][ny] == 0:
