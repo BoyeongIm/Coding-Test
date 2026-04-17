@@ -21,7 +21,7 @@ def bfs(k):
 
     while q:
         x,y,time,left = q.popleft()
-        if x==r2 and y==c2 and left==0:
+        if x==r2 and y==c2 and left>=0:
             return time
         for dx, dy in zip(dxs, dys):
             nx,ny = x+dx, y+dy
