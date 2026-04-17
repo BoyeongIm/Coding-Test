@@ -16,11 +16,11 @@ def in_range(x, y):
 def bfs(k):
     visited = [[False]*n for _ in range(n)]
     dxs, dys = [1,0,0,-1],[0,1,-1,0]
-    q = deque([(r1, c1, 0)])
+    q = deque([(r1, c1, 0, k)])
     visited[r1][c1] = True
 
     while q:
-        x,y,time = q.popleft()
+        x,y,time,k = q.popleft()
         if x==r2 and y==c2 and k==0:
             return time
         for dx, dy in zip(dxs, dys):
@@ -30,7 +30,8 @@ def bfs(k):
                     k -= 1
                 elif grid[nx][ny] == 1 and k <= 0:
                     continue
-                q.append((nx, ny, time+1))
+                q.append((nx, ny, time+1, k))
+                visited[nx][ny] = True
     
     return -1
 
