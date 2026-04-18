@@ -7,8 +7,7 @@ grid = [list(map(int, input().split())) for _ in range(n)]
 def in_range(x, y):
     return 0<=x<n and 0<=y<n
 
-dots = [i for i in range(n)]
-dots = list(combinations_with_replacement(dots,2))
+dots = [(i, j) for i in range(n) for j in range(n)]
 starts = list(combinations(dots, k))
 dxs = [1,0,0,-1]
 dys = [0,1,-1,0]
