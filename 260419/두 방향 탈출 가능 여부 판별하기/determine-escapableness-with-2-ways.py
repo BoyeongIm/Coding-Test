@@ -4,7 +4,7 @@ grid = [list(map(int, input().split())) for _ in range(n)]
 # Please write your code here.
 visited = [[False]*m for _ in range(n)]
 def can_go(x, y):
-    return 0<=x<n and 0<=y<n and grid[x][y] == 1
+    return 0<=x<n and 0<=y<m and grid[x][y] == 1
 
 def dfs(x, y):
     if x==n-1 and y==m-1:
