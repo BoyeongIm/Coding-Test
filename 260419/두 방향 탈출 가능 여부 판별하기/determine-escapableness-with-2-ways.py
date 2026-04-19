@@ -8,7 +8,7 @@ def can_go(x, y):
 
 def dfs(x, y):
     if x==n-1 and y==m-1:
-        return 1
+        return True
 
     dxs = [1,0]
     dys = [0,1]
@@ -18,8 +18,11 @@ def dfs(x, y):
         if can_go(nx, ny):
             visited[nx][ny] = True
             if dfs(nx, ny):
-                return 1
-    return 0
+                return True
+    return False
 
 visited[0][0] = True
-print(dfs(0,0))
+if dfs(0,0):
+    print(1)
+else:
+    print(0)
