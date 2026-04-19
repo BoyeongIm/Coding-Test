@@ -15,7 +15,7 @@ def dfs(x, y):
 
     for dx, dy in zip(dxs, dys):
         nx, ny = x+dx, y+dy
-        if can_go(nx, ny):
+        if can_go(nx, ny) and not visited[nx][ny]:
             visited[nx][ny] = True
             if dfs(nx, ny):
                 return True
