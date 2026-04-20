@@ -3,7 +3,7 @@ K, N = map(int, input().split())
 # Please write your code here.
 
 ans = []
-def pick(num):
+def pick():
     if len(ans) == N:
         for a in ans:
             print(a, end=' ')
@@ -11,8 +11,8 @@ def pick(num):
         return
     for i in range(1, K+1):
         ans.append(i)
-        pick(i+1)
+        pick()
         ans.pop()
     return
     
-pick(1)
+pick()
