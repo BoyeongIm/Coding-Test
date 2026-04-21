@@ -41,7 +41,6 @@ def dfs(idx):
         exploded = sum(sum(row) for row in check)
         maxsize = max(maxsize, exploded)
         return
-    currx, curry = locs[idx]
     for i in range(1,4):
         bombs[idx] = i
         dfs(idx+1)
