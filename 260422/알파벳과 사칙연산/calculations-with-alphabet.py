@@ -7,6 +7,15 @@ engdict = dict()
 ops = {'+', '-', '*'}
 ans = -sys.maxsize
 
+def calc(op, cum, val):
+    if op == '+':
+        newresult = cum + val
+    elif op == '-':
+        newresult = cum - val
+    elif op == '*':
+        newresult = cum * val
+    return newresult
+
 def dfs(idx, result):
     global ans
     if idx >= l:
@@ -19,23 +28,13 @@ def dfs(idx, result):
         op = '+'
     if curr in engdict:    
         val = engdict[curr]
-        if op == '+':
-            newresult = result + val
-        elif op == '-':
-            newresult = result - val
-        elif op == '*':
-            newresult = result * val
+        newresult = calc(op, result, val)
         dfs(idx+2, newresult)
     else:
         for i in range(1, 5):  
             engdict[curr] = i
             val = engdict[curr]
-            if op == '+':
-                newresult = result + val
-            elif op == '-':
-                newresult = result - val
-            elif op == '*':
-                newresult = result * val
+            newresult = calc(op, result, val)
             dfs(idx+2, newresult)
             del engdict[curr]   
     return
