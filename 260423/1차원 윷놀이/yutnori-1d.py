@@ -13,8 +13,6 @@ def play(idx):
         maxscore = max(maxscore, score)
         return
     for i in range(k):
-        if player[i] >= m:
-            continue
         player[i] += nums[idx]
         play(idx+1)
         player[i] -= nums [idx]
