@@ -18,7 +18,6 @@ def play(idx):
         player[i] += nums[idx]
         play(idx+1)
         player[i] -= nums [idx]
-    return
 
 play(0)
 print(maxscore)
