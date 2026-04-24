@@ -18,7 +18,12 @@ if n == 1:
     ans = grid[0][0]
 
 for i in range(1, n):
-    for j in range(1, n):
-        dp[i][j] = max(min(dp[i-1][j], grid[i][j]), min(dp[i][j-1], grid[i][j]))
+    for j in range(1, n): 
+        dp[i][j] = max(
+            # 위에서 오는 거랑 현재꺼 비교
+            min(dp[i-1][j], grid[i][j]), 
+            # 왼쪽에서 오는거랑 현재꺼 비교
+            min(dp[i][j-1], grid[i][j])
+            ) # 두 최솟값 중, 더 큰 값으로 갱신
         
 print(dp[n-1][n-1])
