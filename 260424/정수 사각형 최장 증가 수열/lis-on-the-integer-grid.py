@@ -14,7 +14,7 @@ def dfs(x, y):
     for dx, dy in zip(dxs, dys):
         nx, ny = x+dx, y+dy
         if in_range(nx, ny) and grid[nx][ny] > grid[x][y]:
-            dp[nx][ny] = max(dp[x][y], 1+dfs(nx, ny))
+            dp[x][y] = max(dp[x][y], 1+dfs(nx, ny))
     return dp[x][y]
 ans = -1
 for i in range(n):
