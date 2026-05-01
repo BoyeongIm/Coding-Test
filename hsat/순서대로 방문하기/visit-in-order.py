@@ -21,8 +21,6 @@ def dfs(x, y, idx):
         return 
     for dx, dy in zip(dxs, dys):
         nx, ny = x+dx, y+dy
-        # if (nx, ny) != points[idx] and (nx, ny) in points[idx:]:
-        #     continue
         if cango(nx, ny) and not visited[nx][ny]:
             visited[nx][ny] = True
             if points[idx] != (nx, ny):
