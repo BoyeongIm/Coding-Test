@@ -66,9 +66,10 @@ while len(visited) < total_ocean:
         ## 지금 현재 위치를 기준으로 가장 가까운 칸을 찾기 위해서, 현재 위치 기준 모든 위치까지의 거리 계산
         ## 이동할 타깃 위치를 찾는다 !!!
         dist, directions = get_dist(cx, cy)
-        target = (99,-1,-1)
+        target = (99,-1,-1)    # cx,cy 기준으로 얼마나 떨어져있는지 거리와, 타겟 좌표
         for i in range(N):
             for j in range(N):
+                # 암초가 아니면서 아직 방문하지 않은 바다만 방문할 수 있ㅇ므. 
                 if ocean[i][j] == 0 and (i,j) not in visited and dist[i][j] != -1:
                     if dist[i][j] < target[0]:
                         target = (dist[i][j], i, j)
@@ -80,7 +81,12 @@ while len(visited) < total_ocean:
 
         tdistance, tx, ty = target
         cx, cy = tx, ty
-        cd = [3,2,4,1][directions[tx][ty]]
+        '''
+        # get_dist bfs 코드에서 좌하우상 순서대로(0,1,2,3) 찾는데, 이게 미리 정의한 dirs랑은 다름. 
+        그래서 그걸 맞춰주기 위해서, bfs에서 사용하는 순서에 맞게 매칭시켜줌. difs의 키와 올바르게 매칭시켜줌.
+        즉, dirs에서는 키값이 3,2,4,1 이 순서대로 좌,하,우,상 인것
+        '''
+        cd = [3,2,4,1][directions[tx][ty]]  
 
         visited.add((cx, cy))    
         print(cx+1, cy+1)
