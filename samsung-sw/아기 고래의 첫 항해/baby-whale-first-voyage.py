@@ -60,7 +60,7 @@ while len(visited) < total_ocean:
             break
     else:
         dist = get_dist(cx, cy)
-        target = (99,-1.-1)
+        target = (99,-1,-1)
         for i in range(N):
             for j in range(N):
                 if ocean[i][j] == 0 and (i,j) not in visited and dist[i][j] != -1:
