@@ -122,6 +122,5 @@ def get_off_right():
 while blocks:
     get_off_left()
     get_down()
-    if blocks: 
-        get_off_right()
-        get_down()
+    get_off_right()
+    get_down()
