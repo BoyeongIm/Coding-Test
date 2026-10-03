@@ -89,16 +89,20 @@ def lunch():
         representatives[foodt].append(sorted_gr[0])
 
 def dinner():
+    # representatives를 key 크기로 오름차순 정렬해줘야 하는 이유: 단일-이중-삼중 순서로 진행해야 하기 때문
     for i, replist in sorted(representatives.items(), key=lambda x:x[0]):
+        # 아래 정렬은 같은 그룹 내에서의 순서를 위함
         sorted_replist = sorted(replist, key=lambda x:(-x[0], x[1], x[2]))
         for rep in sorted_replist:
-            cb, cx, cy = rep
-            if delivered[cx][cy]:
+            # 시작 전파자
+            sb, sx, sy = rep
+            if delivered[sx][sy]:
                 continue
-            B_board[cx][cy] = 1
-            f_belief = F_board[cx][cy]
-            x = cb-1    # 간절함
-            dx, dy = dxs[cb % 4], dys[cb % 4]   # 전파 방향
+            B_board[sx][sy] = 1
+            f_belief = F_board[sx][sy]  # 전파할 음식
+            x = sb-1    # 전파 대상의 간절함
+            dx, dy = dxs[sb % 4], dys[sb % 4]   # 전파 방향
+            cx, cy = sx, sy
             while x > 0:
                 nx, ny = cx + dx, cy + dy   # 전파 대상                
                 if not (0<=nx<N and 0<=ny<N):
