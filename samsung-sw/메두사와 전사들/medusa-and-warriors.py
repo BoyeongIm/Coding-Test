@@ -283,7 +283,11 @@ else:
             if (wx, wy) in maxstones:
                 continue
             min_dist = compute_distance(sr, sc, wx, wy)
+
+            # 이동 후 위치를 우선 출발위치로 선언하기. 이동하지 않을 수도 있으니까
             mx, my = wx, wy
+
+            # 1차 이동: 상하좌우
             for dx, dy in zip(dxs, dys):   
                 nwx, nwy = wx+dx, wy+dy
                 if 0<=nwx<N and 0<=nwy<N and not maxgrid[nwx][nwy]:
@@ -291,33 +295,35 @@ else:
                     if dist < min_dist:
                         min_dist = dist
                         mx, my = nwx, nwy
+
+            # 2차 이동: 좌우상하
+            ## 출발지점은 1차에서 업뎃된 이후의 mx,my
+            ## 2차 이동의 결과물을 저장할 변수를 따로 만들어놔야 함. 왜냐면 2차 이동 안할 수도 있는데, mx,my를 그대로 사용하면 
             cx, cy = mx, my
             for dx2, dy2 in zip(dxs2, dys2):
+                # 1차 이동 끝난 애를 기준으로 이동해보기
                 nwx2, nwy2 = mx+dx2, my+dy2
                 if 0<=nwx2<N and 0<=nwy2<N and not maxgrid[nwx2][nwy2]:
                     dist = compute_distance(sr, sc, nwx2, nwy2)
                     if dist < min_dist:
                         min_dist = dist
+                        # 2차 이동 완료하면 cx,cy 업뎃하기
                         cx, cy = nwx2, nwy2
-
-            mx, my = cx, cy
-            all_distance += compute_distance(wx, wy, mx, my)
+            all_distance += compute_distance(wx, wy, cx, cy)
 
             # 이동 전 좌표에서는 빼줘야 함
             wgrid[wx][wy] -= 1
             # ** 4. 전사의 공격 ** #
             # 메두사와 같은 칸에 도달하면, 공격하고 사라져버림. 그러니까 그냥 바로 다음 턴 넘어가기
-            if (mx, my) == (sr, sc):
+            if (cx, cy) == (sr, sc):
                 attackers += 1
                 continue
             # 그렇지 않으면, 우선 이동한 위치를 새롭게 그리드에 반영하기
-            wgrid[mx][my] += 1
-            nwlist.append((mx, my))
+            wgrid[cx][cy] += 1
+            nwlist.append((cx, cy))
         
         # 새로운 애들로 warriors_list 즉 전사들의 좌표 집합 갱신하기
         warriors_list = nwlist
 
         # 해당 턴에서 모든 전사가 이동한 거리의 합, 메두사로 인해 돌이 된 전사의 수, 메두사를 공격한 전사의 수를 공백을 사이에 두고 차례대로 출력
         print(all_distance, maxw, attackers)
-
-
