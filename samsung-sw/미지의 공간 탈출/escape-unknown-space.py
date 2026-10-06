@@ -30,15 +30,13 @@ N, M, F = map(int, input().split())
 dirs = {0:(0,1), 1:(0,-1), 2:(1,0), 3:(-1,0)}
 overall_map = [list(map(int, input().split())) for _ in range(N)]
 
-tm, exitt = None, None
+exitt = None
 # 타임머신 초기 위치와 최종 탈출구 위치 찾기
 for i in range(N):
     for j in range(N):
         if overall_map[i][j] == 4:
             exitt = (i,j)
-        if overall_map[i][j] == 2:
-            tm = (i,j)
-    if tm and exitt:
+    if exitt:
         break
 
 east = [list(map(int, input().split())) for _ in range(M)]
@@ -205,6 +203,7 @@ def floor_bfs(sx, sy, cturn):
         for dx, dy in zip([-1,1,0,0], [0,0,-1,1]):
             nx, ny = cx+dx, cy+dy
             if 0<=nx<N and 0<=ny<N and (nx, ny) not in visited and (overall_map[nx][ny] == 0 or overall_map[nx][ny] == 4):
+                # 이동한 후의 상태를 보는거니까 turn+1로 확인해야 함...
                 if abnormal[nx][ny] <= turn+1:
                     continue
                 else:
