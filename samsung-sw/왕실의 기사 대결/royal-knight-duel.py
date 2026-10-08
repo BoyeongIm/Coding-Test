@@ -41,7 +41,6 @@ moved_list = move_knight(i)
 '''
 def move_who(i, d):
     moved_list = [i]
-    target = []
     dx, dy = d_dict[d]
     # i번 기사의 스타트 위치에서부터 d방향으로 가면서 연결된 애들 모두 찾기
     q = deque([i])
@@ -50,9 +49,12 @@ def move_who(i, d):
     while q:
         k = q.popleft()
         for tx, ty in knightlocs[k]:
+            # 명령 받은 방향 진행, 벽이 아니어야 하고!
             nx, ny = tx+dx, ty+dy
+            # 범위체크 사실 필요 없음
             if 0<=nx<L and 0<=ny<L and chessboard[nx][ny] != 2:
                 k2 = knightmap[nx][ny]
+                # 겹치는(연결되는) 다른 조각이면! 추가
                 if k2 > 0 and k != k2 and k2 not in visited:
                     q.append(k2)
                     visited.add(k2)
@@ -63,26 +65,24 @@ def move_who(i, d):
 
 def move(moved_list, d):
     dx, dy = d_dict[d]
-    old_locs = defaultdict(list)
-    all_new = []
+    old_locs = set()
+    all_new = set()
     for k in moved_list:
         target = knightlocs[k]
         new_locs = []
         for tx, ty in target:
             nx, ny = tx+dx, ty+dy
-            if 0<=nx<L and 0<=ny<L and chessboard[nx][ny] != 2:
-                old_locs[k].append((tx, ty))
-                # knightlocs 업데이트
-                new_locs.append((nx, ny))
-                all_new.append((nx, ny))
+            old_locs.add((tx, ty))
+            # knightlocs 업데이트
+            new_locs.append((nx, ny))
+            all_new.add((nx, ny))
         knightlocs[k] = new_locs
         for nx, ny in new_locs:
             knightmap[nx][ny] = k
 
-    for k, cl in old_locs.items():
-        for cx, cy in cl:
-            if (cx, cy) not in all_new:
-               knightmap[cx][cy] = 0
+    for cx, cy in old_locs:
+        if (cx, cy) not in all_new:
+            knightmap[cx][cy] = 0
     return
 
 '''
