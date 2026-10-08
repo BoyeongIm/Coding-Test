@@ -64,25 +64,22 @@ def move_who(i, d):
     return moved_list
 
 def move(moved_list, d):
+    for k in moved_list:
+        target = knightlocs[k]
+        for tx, ty in target:
+            knightmap[tx][ty] = 0
     dx, dy = d_dict[d]
-    old_locs = set()
-    all_new = set()
+
     for k in moved_list:
         target = knightlocs[k]
         new_locs = []
         for tx, ty in target:
             nx, ny = tx+dx, ty+dy
-            old_locs.add((tx, ty))
             # knightlocs 업데이트
             new_locs.append((nx, ny))
-            all_new.add((nx, ny))
         knightlocs[k] = new_locs
         for nx, ny in new_locs:
             knightmap[nx][ny] = k
-
-    for cx, cy in old_locs:
-        if (cx, cy) not in all_new:
-            knightmap[cx][cy] = 0
     return
 
 '''
